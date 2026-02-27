@@ -1,0 +1,62 @@
+﻿@model List<StudentManagementWebApp.Models.Student>
+
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="mb-4">Student Management</h1>
+
+<!-- ---------------- Add Student Form ---------------- -->
+<form method="post" asp-action="AddStudent" class="row g-3 mb-4">
+    <div class="col-md-3">
+        <input type="text" name="name" placeholder="Name" class="form-control" required />
+    </div>
+    <div class="col-md-3">
+        <input type="text" name="studentNumber" placeholder="Student Number" class="form-control" required />
+    </div>
+    <div class="col-md-3">
+        <input type="text" name="course" placeholder="Course" class="form-control" required />
+    </div>
+    <div class="col-md-2">
+        <input type="number" name="age" placeholder="Age" class="form-control" required />
+    </div>
+    <div class="col-md-1">
+        <button type="submit" class="btn btn-primary w-100">Add</button>
+    </div>
+</form>
+
+<!-- ---------------- Student Table ---------------- -->
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Student Number</th>
+            <th>Course</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="studentTable">
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.StudentNumber</td>
+                <td>@student.Course</td>
+                <td>@student.Age</td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm edit-btn">Edit</button>
+                    <form method="post" asp-action="DeleteStudent" style="display:inline">
+                        <input type="hidden" name="id" value="@student.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- ---------------- Link JavaScript ---------------- -->
+<script src="~/js/student.js"></script>
