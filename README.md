@@ -36,6 +36,10 @@ https://github.com/khethelomnyandu/StudentManagementWebApp.git
 
 4.Use the interface to manage student records.
 
+Author
+
+Your Name – Khethelo Mnyandu
+
 Contribution
 
 This is a student learning project. Feel free to fork the repository and experiment with new features.
